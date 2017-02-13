@@ -41,11 +41,11 @@
                 android:textColor="@color/Gold"/>
                 </LinearLayout>
         <LinearLayout
-            android:onClick="onClicky"
+
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/layClick"
+
             android:layout_weight="1.0">
 
             <LinearLayout
@@ -61,6 +61,8 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:onClick="onClicky"
+                    android:id="@+id/layClick"
                     android:layout_width="match_parent"
                     android:layout_height="269dp"
                     android:background="@drawable/image">
@@ -77,8 +79,15 @@
                         style="@style/CustomProgressBarHorizontal"
                         android:progress="100"
                         android:max="100"
-                        android:indeterminate="true"
-                        android:indeterminateTint="#f44242"/>
+                        android:progressDrawable="@drawable/progress_bar"
+                        android:indeterminate="false"
+                        android:secondaryProgress="100"
+
+
+
+
+
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

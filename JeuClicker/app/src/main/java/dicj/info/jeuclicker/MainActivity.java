@@ -3,12 +3,17 @@ package dicj.info.jeuclicker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    int test;
+    int test,life;
+    private Handler progressBarHandler = new Handler();
+
+
 
 
     @Override
@@ -18,19 +23,40 @@ public class MainActivity extends AppCompatActivity {
         UiChangeListener();
         hideSystemUI();
         test=0;
+        life=100;
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                progressBarHandler.post(new Runnable() {
+                    public void run() {
+
+                    }
+                });
+            }
+        }).start();
+
 
     }
     public void onClicky(View v)
     {
 
+
         switch (v.getId())
         {
             case R.id.layClick:test+=1;
+                life=life-1;
+
                 break;
         }
-
+        final ProgressBar pg =(ProgressBar)findViewById(R.id.myProgress);
+        pg.setProgress(life);
         TextView txtGold = (TextView)findViewById(R.id.idGold);
         txtGold.setText(""+test);
+
+
+
 
 
     }
