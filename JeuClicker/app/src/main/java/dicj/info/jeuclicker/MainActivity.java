@@ -11,9 +11,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     int test,life;
+    boolean monsterDead;
     private Handler progressBarHandler = new Handler();
 
-
+     ProgressBar pg;
+     TextView txtGold;
 
 
     @Override
@@ -24,18 +26,22 @@ public class MainActivity extends AppCompatActivity {
         hideSystemUI();
         test=0;
         life=100;
+        pg =(ProgressBar)findViewById(R.id.myProgress);
+        txtGold = (TextView)findViewById(R.id.idGold);
 
 
-        new Thread(new Runnable() {
+        Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                progressBarHandler.post(new Runnable() {
-                    public void run() {
-
-                    }
-                });
+                {
+                    txtGold.setText(""+test);
+                    pg.setProgress(life);
+                    progressBarHandler.postDelayed(this, 200);
+                }
             }
-        }).start();
+        };
+        progressBarHandler.post(runnable);
+
 
 
     }
@@ -50,14 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
         }
-        final ProgressBar pg =(ProgressBar)findViewById(R.id.myProgress);
-        pg.setProgress(life);
-        TextView txtGold = (TextView)findViewById(R.id.idGold);
-        txtGold.setText(""+test);
-
-
-
-
 
     }
 

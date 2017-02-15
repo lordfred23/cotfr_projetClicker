@@ -61,6 +61,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:onClick="onClicky"
                     android:id="@+id/layClick"
                     android:layout_width="match_parent"
