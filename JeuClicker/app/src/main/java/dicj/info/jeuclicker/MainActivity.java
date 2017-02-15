@@ -10,9 +10,12 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
 
 
-    int test,life;
-    boolean monsterDead;
+    int test,level,damage;
+    double life,lifeAfficher;
+    boolean monsterDead,start;
     private Handler progressBarHandler = new Handler();
+    CMonstre monster;
+
 
      ProgressBar pg;
      TextView txtGold;
@@ -26,17 +29,23 @@ public class MainActivity extends AppCompatActivity {
         hideSystemUI();
         test=0;
         life=100;
+        level=0;
         pg =(ProgressBar)findViewById(R.id.myProgress);
         txtGold = (TextView)findViewById(R.id.idGold);
-
+        start=true;
+        monsterDead=true;
+        damage=1;
+        lifeAfficher=0;
 
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 {
-                    txtGold.setText(""+test);
-                    pg.setProgress(life);
-                    progressBarHandler.postDelayed(this, 200);
+
+                        txtGold.setText("" + test);
+                        pg.setProgress( (int)lifeAfficher);
+                        progressBarHandler.postDelayed(this, 300);
+
                 }
             }
         };
@@ -44,21 +53,50 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
     }
-    public void onClicky(View v)
-    {
+    public void onClicky(View v) {
 
 
         switch (v.getId())
         {
-            case R.id.layClick:test+=1;
-                life=life-1;
+            case R.id.layClick:jouer();
+
 
                 break;
         }
 
     }
+    private void jouer()
+    {
+        createMonster(level);
+        Attack();
 
+    }
+    private void createMonster(int level){
+        if(monsterDead) {
+            level += 1;
+            monster = new CMonstre(level * 10, false);
+            post(monster.getLife());
+            monsterDead=false;
+
+
+
+
+        }
+
+    }
+    private void Attack() {
+        monster.setLife(monster.getLife()-damage);
+        test+=1;
+        lifeAfficher=(double)monster.getLife()/life;
+    }
+    private void post(int life) {
+       this.life = (double)monster.getLife()/100;
+
+    }
 
 
 

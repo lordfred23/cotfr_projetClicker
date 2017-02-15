@@ -83,22 +83,12 @@
                         android:progressDrawable="@drawable/progress_bar"
                         android:indeterminate="false"
                         android:secondaryProgress="100"
-
-
-
-
-
-                        />
+                    />
+                   </LinearLayout>
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@id/myProgress"
-                        android:layout_alignTop="@id/myProgress"
-                        android:layout_alignRight="@id/myProgress"
-                        android:layout_alignBottom="@id/myProgress"
-                        android:background="@android:color/transparent"
-                        android:text="ALLO"/>
-                </LinearLayout>
+                        android:text="@string/gold"/>
 
 
             </LinearLayout>
