@@ -10,15 +10,16 @@ import android.os.Handler;
 public class MainActivity extends AppCompatActivity {
 
 
-    int test,level,damage;
+    int test,level,damage,kill;
     double life,lifeAfficher;
-    boolean monsterDead,start;
+    boolean start;
     private Handler progressBarHandler = new Handler();
     CMonstre monster;
 
 
      ProgressBar pg;
-     TextView txtGold;
+     TextView txtGold,txtLife,txtLevel,txtKill;
+
 
 
     @Override
@@ -29,13 +30,17 @@ public class MainActivity extends AppCompatActivity {
         hideSystemUI();
         test=0;
         life=100;
-        level=0;
+        level=1;
         pg =(ProgressBar)findViewById(R.id.myProgress);
         txtGold = (TextView)findViewById(R.id.idGold);
+        txtLife = (TextView)findViewById(R.id.txtLife);
+        txtLevel=(TextView)findViewById(R.id.txtLevel);
+        txtKill= (TextView)findViewById(R.id.kill);
         start=true;
-        monsterDead=true;
+        createMonster(1);
         damage=1;
-        lifeAfficher=0;
+        kill=0;
+        lifeAfficher=100;
 
         Runnable runnable = new Runnable() {
             @Override
@@ -43,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 {
 
                         txtGold.setText("" + test);
+                        txtLife.setText(""+monster.getLife());
                         pg.setProgress( (int)lifeAfficher);
+                        txtLevel.setText(""+level);
+                        txtKill.setText(""+kill);
                         progressBarHandler.postDelayed(this, 300);
 
                 }
@@ -71,22 +79,35 @@ public class MainActivity extends AppCompatActivity {
     }
     private void jouer()
     {
-        createMonster(level);
+        if (monster.getLife()<=0)
+        {
+            lifeAfficher=100;
+
+            kill++;
+            if(kill % 5==0)
+                createMonster(level++);
+            else
+                createMonster(level);
+        }
         Attack();
+        if (monster.getLife()<=0)
+        {
+            lifeAfficher=100;
+
+            kill++;
+            if(kill % 5==0)
+                createMonster(level++);
+            else
+                createMonster(level);
+        }
+
 
     }
     private void createMonster(int level){
-        if(monsterDead) {
-            level += 1;
+
+
             monster = new CMonstre(level * 10, false);
             post(monster.getLife());
-            monsterDead=false;
-
-
-
-
-        }
-
     }
     private void Attack() {
         monster.setLife(monster.getLife()-damage);
