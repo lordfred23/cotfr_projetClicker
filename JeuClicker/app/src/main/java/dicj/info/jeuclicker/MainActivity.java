@@ -12,10 +12,11 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
 
-    int test, level, damage, kill,damageSeconde;
+
     double life, lifeAfficher;
     boolean start;
     private Handler progressBarHandler = new Handler();
+    CJoueur joueur;
     CMonstre monster;
 
 
@@ -29,19 +30,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         UiChangeListener();
         hideSystemUI();
-        test = 0;
+        joueur = new CJoueur();
         life = 100;
-        level = 1;
         pg = (ProgressBar) findViewById(R.id.myProgress);
         txtGold = (TextView) findViewById(R.id.idGold);
         txtLife = (TextView) findViewById(R.id.txtLife);
         txtLevel = (TextView) findViewById(R.id.txtLevel);
         txtKill = (TextView) findViewById(R.id.kill);
         start = true;
-        damageSeconde=3;
         createMonster(1);
-        damage = 1;
-        kill = 0;
+
+
         lifeAfficher = 100;
 
         Runnable runnable = new Runnable() {
@@ -49,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 {
 
-                    txtGold.setText("" + test);
+                    txtGold.setText("" + joueur.getGold());
                     txtLife.setText("" + monster.getLife());
                     pg.setProgress((int) lifeAfficher);
-                    txtLevel.setText("Level :" + level);
-                    txtKill.setText(" nb de Kill :" + kill);
+                    txtLevel.setText("Level :" +joueur.getLevel());
+                    txtKill.setText(" nb de Kill :" + joueur.getKill());
                     progressBarHandler.postDelayed(this, 300);
 
                 }
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 {
                     killedOrNot();
-                    monster.setLife(monster.getLife() - damageSeconde);
+                    monster.setLife(monster.getLife() - joueur.getDamageSeconde());
                     lifeAfficher = (double) monster.getLife() / life;
                     killedOrNot();
                         progressBarHandler.postDelayed(this, 1000);
@@ -87,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.attack1:
                 if (enoughGold(25))
-                    damage++;
+                    joueur.setDamage(joueur.getDamage()+1);
 
                 break;
         }
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Attack() {
-        monster.setLife(monster.getLife() - damage);
+        monster.setLife(monster.getLife() - joueur.getDamage());
         lifeAfficher = (double) monster.getLife() / life;
     }
 
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void randomGold() {
         Random rn = new Random();
-        test += rn.nextInt(10) * level;
+        joueur.setGold(joueur.getGold()+(rn.nextInt(10) * joueur.getLevel()));
     }
 
 
@@ -159,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean enoughGold(int cost) {
-        if (cost <= test) {
-            test = test - cost;
+        if (cost <= joueur.getGold()) {
+            joueur.setGold(joueur.getGold() - cost);
             return true;
         }
         else {
@@ -172,13 +171,14 @@ public class MainActivity extends AppCompatActivity {
     {
         if (monster.getLife() <= 0) {
             lifeAfficher = 100;
+            joueur.setKill(joueur.getKill()+1);
 
-            kill++;
-            if (kill % 5 == 0) {
+            if (joueur.getKill() % 5 == 0) {
                 randomGold();
-                createMonster(level++);
+                joueur.setLevel(joueur.getLevel()+1);
+                createMonster(joueur.getLevel());
             } else {
-                createMonster(level);
+                createMonster(joueur.getLevel());
                 randomGold();
             }
 
