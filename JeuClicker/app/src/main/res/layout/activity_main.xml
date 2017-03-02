@@ -68,7 +68,8 @@
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp">
+                    android:layout_height="87dp"
+                    android:id="@+id/attack2">
                     <ImageView
                         android:id="@+id/ImageView"
                         android:layout_width="wrap_content"
@@ -78,14 +79,15 @@
                         android:padding="0dp"/>
 
                     <TextView
-                        android:id="@+id/ImageViewText"
+
+                        android:id="@+id/txtAttack2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@id/ImageView"
                         android:layout_alignTop="@id/ImageView"
                         android:layout_alignRight="@id/ImageView"
                         android:layout_alignBottom="@id/ImageView"
-                        android:text="Test \n test"
+                        android:text=""
                         android:gravity="center"
                     />
                 </RelativeLayout>
