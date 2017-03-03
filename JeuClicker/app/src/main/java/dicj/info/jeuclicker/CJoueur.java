@@ -6,6 +6,7 @@ package dicj.info.jeuclicker;
 
 public class CJoueur {
     int gold,kill,damage,damageSeconde,level;
+    double critique;
     public CJoueur()
     {
         gold =0;
@@ -13,6 +14,7 @@ public class CJoueur {
         damage=1;
         damageSeconde=0;
         level=1;
+        critique=0.50;
     }
 
     public int getDamage() {
@@ -53,5 +55,13 @@ public class CJoueur {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public double getCritique() {
+        return critique;
+    }
+
+    public void setCritique(double critique) {
+        this.critique = critique;
     }
 }

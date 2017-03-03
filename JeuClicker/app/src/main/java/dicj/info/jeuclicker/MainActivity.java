@@ -12,7 +12,6 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
 
-
     double life, lifeAfficher;
     boolean start;
     private Handler progressBarHandler = new Handler();
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     txtGold.setText("" + joueur.getGold());
                     txtLife.setText("" + monster.getLife());
                     pg.setProgress((int) lifeAfficher);
-                    txtLevel.setText("Level :" +joueur.getLevel());
+                    txtLevel.setText("Level :" + joueur.getLevel());
                     txtKill.setText(" nb de Kill :" + joueur.getKill());
                     progressBarHandler.postDelayed(this, 300);
 
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     monster.setLife(monster.getLife() - joueur.getDamageSeconde());
                     lifeAfficher = (double) monster.getLife() / life;
                     killedOrNot();
-                        progressBarHandler.postDelayed(this, 1000);
+                    progressBarHandler.postDelayed(this, 1000);
 
                 }
             }
@@ -86,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.attack1:
                 if (enoughGold(25))
-                    joueur.setDamage(joueur.getDamage()+1);
+                    joueur.setDamage(joueur.getDamage() + 1);
 
                 break;
         }
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
         killedOrNot();
 
 
-
     }
 
     private void createMonster(int level) {
@@ -110,8 +108,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Attack() {
-        monster.setLife(monster.getLife() - joueur.getDamage());
-        lifeAfficher = (double) monster.getLife() / life;
+        if (Crit_calc()) {
+            monster.setLife(monster.getLife() - (joueur.getDamage() * 2));
+            lifeAfficher = (double) monster.getLife() / life;
+        } else {
+            monster.setLife(monster.getLife() - joueur.getDamage());
+            lifeAfficher = (double) monster.getLife() / life;
+        }
+
     }
 
     private void post() {
@@ -121,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void randomGold() {
         Random rn = new Random();
-        joueur.setGold(joueur.getGold()+(rn.nextInt(10) * joueur.getLevel()));
+        joueur.setGold(joueur.getGold() + (rn.nextInt(10) * joueur.getLevel()));
     }
 
 
@@ -161,21 +165,20 @@ public class MainActivity extends AppCompatActivity {
         if (cost <= joueur.getGold()) {
             joueur.setGold(joueur.getGold() - cost);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
 
     }
-    private void killedOrNot()
-    {
+
+    private void killedOrNot() {
         if (monster.getLife() <= 0) {
             lifeAfficher = 100;
-            joueur.setKill(joueur.getKill()+1);
+            joueur.setKill(joueur.getKill() + 1);
 
             if (joueur.getKill() % 5 == 0) {
                 randomGold();
-                joueur.setLevel(joueur.getLevel()+1);
+                joueur.setLevel(joueur.getLevel() + 1);
                 createMonster(joueur.getLevel());
             } else {
                 createMonster(joueur.getLevel());
@@ -184,6 +187,26 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    private boolean Crit_calc() {
+        double min;
+        min = 100.00 - joueur.getCritique();
+        double x = Math.random() * (100.00 - 0.00);
+        x = Math.round(x);
+
+        int retval = Double.compare(x, min);
+        if ((retval == 1)||(retval ==0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+
+
+
 }
 
 
