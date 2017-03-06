@@ -17,10 +17,11 @@ public class MainActivity extends AppCompatActivity {
     private Handler progressBarHandler = new Handler();
     CJoueur joueur;
     CMonstre monster;
+    CAttacker[] tabAttack;
 
 
     ProgressBar pg;
-    TextView txtGold, txtLife, txtLevel, txtKill;
+    TextView txtGold, txtLife, txtLevel, txtKill,txtAttack1,txtAttack2;
 
 
     @Override
@@ -29,18 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         UiChangeListener();
         hideSystemUI();
-        joueur = new CJoueur();
-        life = 100;
-        pg = (ProgressBar) findViewById(R.id.myProgress);
-        txtGold = (TextView) findViewById(R.id.idGold);
-        txtLife = (TextView) findViewById(R.id.txtLife);
-        txtLevel = (TextView) findViewById(R.id.txtLevel);
-        txtKill = (TextView) findViewById(R.id.kill);
-        start = true;
-        createMonster(1);
+        Initialisation_Variable();
 
-
-        lifeAfficher = 100;
 
         Runnable runnable = new Runnable() {
             @Override
@@ -52,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     pg.setProgress((int) lifeAfficher);
                     txtLevel.setText("Level :" + joueur.getLevel());
                     txtKill.setText(" nb de Kill :" + joueur.getKill());
+                    Initialisation_Txt_Attack();
                     progressBarHandler.postDelayed(this, 300);
 
                 }
@@ -75,6 +67,28 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    private void Initialisation_Variable(){
+        CAttacker att;
+        joueur = new CJoueur();
+        life = 100;
+        pg = (ProgressBar) findViewById(R.id.myProgress);
+        txtGold = (TextView) findViewById(R.id.idGold);
+        txtLife = (TextView) findViewById(R.id.txtLife);
+        txtLevel = (TextView) findViewById(R.id.txtLevel);
+        txtKill = (TextView) findViewById(R.id.kill);
+        txtAttack1=(TextView) findViewById(R.id.txtAttack1);
+        txtAttack2=(TextView) findViewById(R.id.txtAttack2);
+        start = true;
+        createMonster(1);
+        tabAttack = new CAttacker[2];
+        tabAttack[0]= new CAttacker("attack1",25,1);
+        tabAttack[1]= new CAttacker("attack2",100,1);
+
+
+
+
+        lifeAfficher = 100;
+    }
 
     public void onClicky(View v) {
 
@@ -86,7 +100,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.attack1:
                 if (enoughGold(25))
                     joueur.setDamage(joueur.getDamage() + 1);
-
+                break;
+            case R.id.attack2:
+                if(enoughGold(100))
+                    joueur.setDamageSeconde(joueur.getDamageSeconde()+1);
                 break;
         }
 
@@ -191,15 +208,19 @@ public class MainActivity extends AppCompatActivity {
     private boolean Crit_calc() {
         double min;
         min = 100.00 - joueur.getCritique();
-        double x = Math.random() * (100.00 - 0.00);
+        double x = Math.random() * (100.00);
         x = Math.round(x);
 
         int retval = Double.compare(x, min);
-        if ((retval == 1)||(retval ==0)) {
+        if ((retval == 1)||(retval == 0)) {
             return true;
         } else {
             return false;
         }
+    }
+    private void Initialisation_Txt_Attack(){
+        txtAttack1.setText("Cost:"+tabAttack[0].getCost()+" \n dommage:"+tabAttack[0].getDmg());
+        txtAttack2.setText("Cost:"+tabAttack[1].getCost()+" \n dommage:"+tabAttack[1].getDmg());
     }
 
 

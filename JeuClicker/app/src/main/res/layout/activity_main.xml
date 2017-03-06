@@ -53,23 +53,38 @@
                 android:layout_width="160dp"
                 android:layout_weight=".5"
                 android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="105dp"
-                    android:id="@+id/attack1"
-                    android:onClick="onClicky">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/attack1"
-                        android:layout_margin="0dp"
-                        android:padding="0dp"/>
-
-                </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="87dp"
-                    android:id="@+id/attack2">
+                    android:id="@+id/attack1"
+                    android:onClick="onClicky">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/attacknotext"
+                        android:layout_margin="0dp"
+                        android:padding="0dp"
+                        android:id="@+id/imageAttack1"/>
+                    <TextView
+
+                        android:id="@+id/txtAttack1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/imageAttack1"
+                        android:layout_alignTop="@id/imageAttack1"
+                        android:layout_alignRight="@id/imageAttack1"
+                        android:layout_alignBottom="@id/imageAttack1"
+                        android:text=""
+                        android:gravity="center">
+
+                    </TextView>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="87dp"
+                    android:id="@+id/attack2"
+                    android:onClick="onClicky">
                     <ImageView
                         android:id="@+id/ImageView"
                         android:layout_width="wrap_content"
