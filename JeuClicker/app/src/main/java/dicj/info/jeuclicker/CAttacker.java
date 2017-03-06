@@ -6,12 +6,13 @@ package dicj.info.jeuclicker;
 
 public class CAttacker {
     String nom;
-    int cost,dmg;
-    public CAttacker(String nom,int cost,int dmg)
+    int cost,dmg,level;
+    public CAttacker(String nom,int cost,int dmg,int level)
     {
         this.nom=nom;
         this.cost=cost;
         this.dmg=dmg;
+        this.level=level;
     }
 
     public int getCost() {

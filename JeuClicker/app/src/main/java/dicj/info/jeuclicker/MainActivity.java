@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         UiChangeListener();
         hideSystemUI();
         Initialisation_Variable();
-
+        Initialisation_Txt_Attack();
 
         Runnable runnable = new Runnable() {
             @Override
@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
                     txtGold.setText("" + joueur.getGold());
                     txtLife.setText("" + monster.getLife());
                     pg.setProgress((int) lifeAfficher);
-                    txtLevel.setText("Level :" + joueur.getLevel());
+                    txtLevel.setText("Level :" + joueur.getLevel() +"dmg:"+tabAttack[0].getDmg());
                     txtKill.setText(" nb de Kill :" + joueur.getKill());
-                    Initialisation_Txt_Attack();
+
                     progressBarHandler.postDelayed(this, 300);
 
                 }
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         start = true;
         createMonster(1);
         tabAttack = new CAttacker[2];
-        tabAttack[0]= new CAttacker("attack1",25,1);
-        tabAttack[1]= new CAttacker("attack2",100,1);
+        tabAttack[0]= new CAttacker("attack1",25,1,1);
+        tabAttack[1]= new CAttacker("attack2",100,1,1);
 
 
 
@@ -98,14 +98,20 @@ public class MainActivity extends AppCompatActivity {
                 jouer();
                 break;
             case R.id.attack1:
-                if (enoughGold(25))
-                    joueur.setDamage(joueur.getDamage() + 1);
+                if (enoughGold(tabAttack[0].getCost()))
+                {
+                    joueur.setDamage(joueur.getDamage() + tabAttack[0].getDmg());
+                    Augmentation_Attack1();
+                }
+
                 break;
             case R.id.attack2:
                 if(enoughGold(100))
                     joueur.setDamageSeconde(joueur.getDamageSeconde()+1);
                 break;
+
         }
+        Initialisation_Txt_Attack();
 
     }
 
@@ -120,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     private void createMonster(int level) {
 
 
-        monster = new CMonstre(level * 10, false);
+        monster = new CMonstre(level * 15, false);
         post();
     }
 
@@ -219,8 +225,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void Initialisation_Txt_Attack(){
-        txtAttack1.setText("Cost:"+tabAttack[0].getCost()+" \n dommage:"+tabAttack[0].getDmg());
+        txtAttack1.setText("Cost:"+tabAttack[0].getCost()+" \n dmg:"+tabAttack[0].getDmg());
         txtAttack2.setText("Cost:"+tabAttack[1].getCost()+" \n dommage:"+tabAttack[1].getDmg());
+    }
+
+    private void Augmentation_Attack1()
+    {
+            tabAttack[0].setCost((int)Math.round(tabAttack[0].getCost()*1.5));
+            tabAttack[0].setDmg((int)Math.round(tabAttack[0].getDmg()*1.2));
     }
 
 
