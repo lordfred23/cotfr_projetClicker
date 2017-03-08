@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     double life, lifeAfficher;
     boolean start;
     private Handler progressBarHandler = new Handler();
+    int lifeGold,lvlLife;
     CJoueur joueur;
     CMonstre monster;
     CAttacker[] tabAttack;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         CAttacker att;
         joueur = new CJoueur();
         life = 100;
+        lvlLife=15;
         pg = (ProgressBar) findViewById(R.id.myProgress);
         txtGold = (TextView) findViewById(R.id.idGold);
         txtLife = (TextView) findViewById(R.id.txtLife);
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         createMonster(1);
         tabAttack = new CAttacker[2];
         tabAttack[0]= new CAttacker("attack1",25,1,1);
-        tabAttack[1]= new CAttacker("attack2",100,1,1);
+        tabAttack[1]= new CAttacker("attack2",100,4,1);
 
 
 
@@ -106,8 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.attack2:
-                if(enoughGold(100))
-                    joueur.setDamageSeconde(joueur.getDamageSeconde()+1);
+                if(enoughGold(tabAttack[1].getCost()))
+                {
+                    joueur.setDamageSeconde(joueur.getDamageSeconde()+tabAttack[1].getDmg());
+                    Augmentation_Attack2();
+                }
+
                 break;
 
         }
@@ -125,8 +131,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void createMonster(int level) {
 
-
-        monster = new CMonstre(level * 15, false);
+        switch (level){
+            case 10:lvlLife=40;
+                break;
+        }
+        monster = new CMonstre(level * lvlLife, false);
+        lifeGold=monster.getLife();
         post();
     }
 
@@ -148,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void randomGold() {
         Random rn = new Random();
-        joueur.setGold(joueur.getGold() + (rn.nextInt(10) * joueur.getLevel()));
+        joueur.setGold(joueur.getGold() + rn.nextInt(lifeGold));
     }
 
 
@@ -203,9 +213,12 @@ public class MainActivity extends AppCompatActivity {
                 randomGold();
                 joueur.setLevel(joueur.getLevel() + 1);
                 createMonster(joueur.getLevel());
+
             } else {
-                createMonster(joueur.getLevel());
                 randomGold();
+                createMonster(joueur.getLevel());
+
+
             }
 
         }
@@ -229,11 +242,15 @@ public class MainActivity extends AppCompatActivity {
         txtAttack2.setText("Cost:"+tabAttack[1].getCost()+" \n dommage:"+tabAttack[1].getDmg());
     }
 
-    private void Augmentation_Attack1()
-    {
-            tabAttack[0].setCost((int)Math.round(tabAttack[0].getCost()*1.5));
+    private void Augmentation_Attack1() {
+            tabAttack[0].setCost((int)Math.round(tabAttack[0].getCost()*1.25));
             tabAttack[0].setDmg((int)Math.round(tabAttack[0].getDmg()*1.2));
     }
+    private void Augmentation_Attack2(){
+        tabAttack[1].setCost((int)Math.round(tabAttack[1].getCost()*1.25));
+        tabAttack[1].setDmg((int)Math.round(tabAttack[1].getDmg()*1.2));
+    }
+
 
 
 
