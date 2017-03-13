@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     CJoueur joueur;
     CMonstre monster;
     CAttacker[] tabAttack;
+    int cpt;
 
 
     ProgressBar pg;
@@ -81,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
         txtAttack1=(TextView) findViewById(R.id.txtAttack1);
         txtAttack2=(TextView) findViewById(R.id.txtAttack2);
         start = true;
+        cpt=0;
         createMonster(1);
         tabAttack = new CAttacker[2];
         tabAttack[0]= new CAttacker("attack1",25,1,1);
-        tabAttack[1]= new CAttacker("attack2",100,4,1);
+        tabAttack[1]= new CAttacker("attack2",100,2,1);
+
 
 
 
@@ -130,11 +133,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createMonster(int level) {
-
-        switch (level){
-            case 10:lvlLife=40;
-                break;
+        cpt++;
+        if((level % 5 ==0)&&(cpt>=6))
+        {
+            lvlLife=lvlLife+10;
+            cpt=0;
         }
+        else
+
         monster = new CMonstre(level * lvlLife, false);
         lifeGold=monster.getLife();
         post();
@@ -158,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void randomGold() {
         Random rn = new Random();
-        joueur.setGold(joueur.getGold() + rn.nextInt(lifeGold));
+        joueur.setGold(joueur.getGold() + rn.nextInt(lifeGold/2));
     }
 
 
@@ -244,11 +250,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void Augmentation_Attack1() {
             tabAttack[0].setCost((int)Math.round(tabAttack[0].getCost()*1.25));
-            tabAttack[0].setDmg((int)Math.round(tabAttack[0].getDmg()*1.2));
+
     }
     private void Augmentation_Attack2(){
         tabAttack[1].setCost((int)Math.round(tabAttack[1].getCost()*1.25));
-        tabAttack[1].setDmg((int)Math.round(tabAttack[1].getDmg()*1.2));
+
     }
 
 
