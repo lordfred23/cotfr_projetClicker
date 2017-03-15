@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ProgressBar pg;
-    TextView txtGold, txtLife, txtLevel, txtKill,txtAttack1,txtAttack2;
+    TextView txtGold, txtLife, txtLevel, txtKill,txtAttack1,txtAttack2,txtAttack3,txtAttack4,txtAttack5;
 
 
     @Override
@@ -81,12 +81,21 @@ public class MainActivity extends AppCompatActivity {
         txtKill = (TextView) findViewById(R.id.kill);
         txtAttack1=(TextView) findViewById(R.id.txtAttack1);
         txtAttack2=(TextView) findViewById(R.id.txtAttack2);
+        txtAttack3=(TextView)findViewById(R.id.txtAttack3);
+        txtAttack4=(TextView)findViewById(R.id.txtAttack4);
+        txtAttack5=(TextView) findViewById(R.id.txtAttack5);
+
+
         start = true;
         cpt=0;
         createMonster(1);
-        tabAttack = new CAttacker[2];
+        tabAttack = new CAttacker[5];
         tabAttack[0]= new CAttacker("attack1",25,1,1);
         tabAttack[1]= new CAttacker("attack2",100,2,1);
+        tabAttack[2]= new CAttacker("attack3",1000,6,1);
+        tabAttack[3]= new CAttacker("attack4",8000,10,1);
+        tabAttack[4]= new CAttacker("attack5",15000,15,1);
+
 
 
 
@@ -116,7 +125,27 @@ public class MainActivity extends AppCompatActivity {
                     joueur.setDamageSeconde(joueur.getDamageSeconde()+tabAttack[1].getDmg());
                     Augmentation_Attack2();
                 }
-
+                 break;
+            case R.id.attack3:
+                if(enoughGold(tabAttack[2].getCost()))
+                {
+                    joueur.setDamageSeconde(joueur.getDamageSeconde()+tabAttack[2].getDmg());
+                    Augmentation_Attack3();
+                }
+                break;
+            case R.id.attack4:
+                if(enoughGold(tabAttack[3].getCost()))
+                {
+                    joueur.setDamageSeconde(joueur.getDamageSeconde()+tabAttack[3].getDmg());
+                    Augmentation_Attack4();
+                }
+                break;
+            case R.id.attack5:
+                if(enoughGold(tabAttack[4].getCost()))
+                {
+                    joueur.setDamageSeconde(joueur.getDamageSeconde()+tabAttack[4].getDmg());
+                    Augmentation_Attack5();
+                }
                 break;
 
         }
@@ -246,6 +275,10 @@ public class MainActivity extends AppCompatActivity {
     private void Initialisation_Txt_Attack(){
         txtAttack1.setText("Cost:"+tabAttack[0].getCost()+" \n dmg:"+tabAttack[0].getDmg());
         txtAttack2.setText("Cost:"+tabAttack[1].getCost()+" \n dommage:"+tabAttack[1].getDmg());
+        txtAttack3.setText("Cost:"+tabAttack[2].getCost()+" \n dommage:"+tabAttack[2].getDmg());
+        txtAttack4.setText("Cost:"+tabAttack[3].getCost()+" \n dommage:"+tabAttack[3].getDmg());
+        txtAttack5.setText("Cost:"+tabAttack[4].getCost()+" \n dommage:"+tabAttack[4].getDmg());
+
     }
 
     private void Augmentation_Attack1() {
@@ -256,7 +289,18 @@ public class MainActivity extends AppCompatActivity {
         tabAttack[1].setCost((int)Math.round(tabAttack[1].getCost()*1.25));
 
     }
+    private void Augmentation_Attack3(){
+        tabAttack[2].setCost((int)Math.round(tabAttack[2].getCost()*1.25));
 
+    }
+    private void Augmentation_Attack4(){
+        tabAttack[3].setCost((int)Math.round(tabAttack[3].getCost()*1.25));
+
+    }
+    private void Augmentation_Attack5(){
+        tabAttack[4].setCost((int)Math.round(tabAttack[4].getCost()*1.25));
+
+    }
 
 
 
