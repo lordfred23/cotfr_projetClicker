@@ -9,7 +9,7 @@ public class CJoueur {
     double critique;
     public CJoueur()
     {
-        gold =1000000;
+        gold =0;
         kill=0;
         damage=1;
         damageSeconde=0;
