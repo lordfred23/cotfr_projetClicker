@@ -7,6 +7,7 @@ package dicj.info.jeuclicker;
 public class CAttacker {
     String nom;
     int cost,dmg,level;
+
     public CAttacker(String nom,int cost,int dmg,int level)
     {
         this.nom=nom;

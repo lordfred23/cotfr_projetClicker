@@ -277,7 +277,14 @@ public class MainActivity extends AppCompatActivity {
         txtAttack2.setText("Cost:"+tabAttack[1].getCost()+" \n dommage:"+tabAttack[1].getDmg());
         txtAttack3.setText("Cost:"+tabAttack[2].getCost()+" \n dommage:"+tabAttack[2].getDmg());
         txtAttack4.setText("Cost:"+tabAttack[3].getCost()+" \n dommage:"+tabAttack[3].getDmg());
-        txtAttack5.setText("Cost:"+tabAttack[4].getCost()+" \n dommage:"+tabAttack[4].getDmg());
+
+        if(tabAttack[4].getCost()>=100000){
+            int atk4=tabAttack[4].getCost()/1000;
+            txtAttack5.setText("Cost:"+atk4+"K"+" \n dommage:"+tabAttack[4].getDmg());
+        }else{
+            txtAttack5.setText("Cost:"+tabAttack[4].getCost()+" \n dommage:"+tabAttack[4].getDmg());
+        }
+
 
     }
 
