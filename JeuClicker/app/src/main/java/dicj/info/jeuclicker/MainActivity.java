@@ -1,5 +1,7 @@
 package dicj.info.jeuclicker;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     CMonstre monster;
     CAttacker[] tabAttack;
     int cpt;
+    MediaPlayer mp;
+
 
 
     ProgressBar pg;
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         hideSystemUI();
         Initialisation_Variable();
         Initialisation_Txt_Attack();
+
 
         Runnable runnable = new Runnable() {
             @Override
@@ -109,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (v.getId()) {
             case R.id.layClick:
+                mediaReader();
                 jouer();
+
                 break;
             case R.id.attack1:
                 if (enoughGold(tabAttack[0].getCost()))
@@ -147,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
                     Augmentation_Attack5();
                 }
                 break;
+            case R.id.marketButton:callMarket();
+                break;
 
         }
         Initialisation_Txt_Attack();
@@ -159,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
         killedOrNot();
 
 
+    }
+    private void callMarket(){
+        Intent intent = new Intent(this,MarketActivities.class);
+        startActivity(intent);
     }
 
     private void createMonster(int level) {
@@ -241,6 +254,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void killedOrNot() {
         if (monster.getLife() <= 0) {
+            mp = MediaPlayer.create(getApplicationContext(), R.raw.explosion);
+            mp.start();
             lifeAfficher = 100;
             joueur.setKill(joueur.getKill() + 1);
 
@@ -309,7 +324,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    private void mediaReader(){
+        if (mp != null)
+        {
+            mp.reset();
+        }
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.laserblaster);
+        mp.start();
+    }
 
 
 

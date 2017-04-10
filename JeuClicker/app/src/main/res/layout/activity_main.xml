@@ -55,13 +55,13 @@
                 android:layout_height="match_parent">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp"
+                    android:layout_height="60dp"
                     android:id="@+id/attack1"
                     android:onClick="onClicky">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/attacknotext"
+                        android:src="@drawable/laser"
                         android:layout_margin="0dp"
                         android:padding="0dp"
                         android:id="@+id/imageAttack1"/>
@@ -82,14 +82,14 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp"
+                    android:layout_height="60dp"
                     android:id="@+id/attack2"
                     android:onClick="onClicky">
                     <ImageView
                         android:id="@+id/ImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/attacknotext"
+                        android:src="@drawable/doublelaser"
                         android:layout_margin="0dp"
                         android:padding="0dp"/>
 
@@ -108,14 +108,14 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp"
+                    android:layout_height="60dp"
                     android:id="@+id/attack3"
                     android:onClick="onClicky">
                     <ImageView
                         android:id="@+id/ImageView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/attacknotext"
+                        android:src="@drawable/canongauss"
                         android:layout_margin="0dp"
                         android:padding="0dp"/>
 
@@ -246,6 +246,16 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/kill"
                         android:textColor="@color/BloodRed"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Marché"
+                        android:onClick="onClicky"
+                        android:id="@+id/marketButton"/>
                 </LinearLayout>
 
 
