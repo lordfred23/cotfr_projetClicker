@@ -9,7 +9,7 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     tools:context="dicj.info.jeuclicker.MainActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/realbackground">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
