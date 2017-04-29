@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.0 r15299"
+   sodipodi:docname="buttonAttackNoText.svg"
+   inkscape:export-filename="C:\Users\utilisateur\Documents\cotfr_projetClicker\JeuClicker\app\src\main\res\drawable\attack1.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="286.98491"
+     inkscape:cy="871.00755"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true"
+     inkscape:snap-grids="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1005"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4485" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#2689df;fill-opacity:0.99303138;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:1"
+       id="rect4489"
+       width="89.769341"
+       height="55.5625"
+       x="52.72768"
+       y="53.205357"
+       inkscape:export-filename="C:\Users\utilisateur\Documents\cotfr_projetClicker\JeuClicker\app\src\main\res\drawable\attack1.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#241c1c;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="90.525299"
+       y="96.294647"
+       id="text4507"><tspan
+         sodipodi:role="line"
+         id="tspan4505"
+         x="90.525299"
+         y="102.64285"
+         style="fill:#241c1c;stroke-width:0.26458332" /></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Calque 2">
+    <rect
+       style="opacity:1;fill:#ffcc00;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:1"
+       id="rect4494"
+       width="78.997025"
+       height="46.302082"
+       x="58.39732"
+       y="57.74107" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Calque 3">
+    <rect
+       style="opacity:1;fill:#f4eed7;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:1"
+       id="rect4497"
+       width="60.287201"
+       height="30.238094"
+       x="67.279762"
+       y="66.056549" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="68.887268"
+       y="80.419273"
+       id="text4522"><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="86.767479"
+         style="stroke-width:0.26458332"
+         id="tspan4518" /><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="93.382057"
+         style="stroke-width:0.26458332"
+         id="tspan4508" /><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="99.996643"
+         style="stroke-width:0.26458332"
+         id="tspan4510" /><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="106.61123"
+         style="stroke-width:0.26458332"
+         id="tspan4512" /><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="113.22581"
+         style="stroke-width:0.26458332"
+         id="tspan4503" /><tspan
+         sodipodi:role="line"
+         x="68.887268"
+         y="119.84039"
+         style="stroke-width:0.26458332"
+         id="tspan4506" /></text>
+  </g>
+</svg>

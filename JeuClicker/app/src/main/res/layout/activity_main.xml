@@ -134,14 +134,14 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp"
+                    android:layout_height="60dp"
                     android:id="@+id/attack4"
                     android:onClick="onClicky">
                     <ImageView
                         android:id="@+id/ImageView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/attacknotext"
+                        android:src="@drawable/plasmacannon"
                         android:layout_margin="0dp"
                         android:padding="0dp"/>
 
@@ -160,14 +160,14 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="87dp"
+                    android:layout_height="60dp"
                     android:id="@+id/attack5"
                     android:onClick="onClicky">
                     <ImageView
                         android:id="@+id/ImageView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/attacknotext"
+                        android:src="@drawable/gravitoncannon"
                         android:layout_margin="0dp"
                         android:padding="0dp"/>
 
@@ -198,7 +198,7 @@
                     android:id="@+id/layClick"
                     android:layout_width="match_parent"
                     android:layout_height="269dp"
-                    android:background="@drawable/image">
+                    android:background="@drawable/bording">
 
                 </LinearLayout>
                 <LinearLayout

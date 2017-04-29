@@ -205,8 +205,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void randomGold() {
+        int x=0;
         Random rn = new Random();
-        joueur.setGold(joueur.getGold() + rn.nextInt(lifeGold/2));
+        if(lifeGold>0){
+            x=rn.nextInt(lifeGold/2);
+        }
+        if(x<0)
+            x=x*-1;
+        joueur.setGold(joueur.getGold() +x );
     }
 
 
