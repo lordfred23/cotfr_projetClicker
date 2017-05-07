@@ -1,8 +1,12 @@
 package dicj.info.jeuclicker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by utilisateur on 2017-03-27.
@@ -10,6 +14,9 @@ import android.view.View;
 
 public class MarketActivities extends AppCompatActivity {
 
+    valuesMarket vm;
+    CJoueur joueur;
+    TextView txtTrophy;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -17,7 +24,18 @@ public class MarketActivities extends AppCompatActivity {
         setContentView(R.layout.market);
         UiChangeListener();
         hideSystemUI();
+        vm = new valuesMarket();
+        joueur = new CJoueur();
+        txtTrophy=(TextView)findViewById(R.id.txtTrophyMarket);
+        txtTrophy.setText("Trophy : "+joueur.getTrophy());
+
     }
+    @Override
+    public void onResume(){
+        super.onResume();
+        txtTrophy.setText("Trophy : "+joueur.getTrophy());
+    }
+
 
 
     private void hideSystemUI() {
@@ -50,6 +68,20 @@ public class MarketActivities extends AppCompatActivity {
                 }
             }
         });
+
+        }
+
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.back:restartView();
+                break;
+        }
+    }
+    private void restartView(){
+        Intent intent =new Intent(this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+
     }
 }
 

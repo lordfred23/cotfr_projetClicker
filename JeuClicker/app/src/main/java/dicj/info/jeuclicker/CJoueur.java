@@ -5,8 +5,8 @@ package dicj.info.jeuclicker;
  */
 
 public class CJoueur {
-    int gold,kill,damage,damageSeconde,level;
-    double critique;
+     int gold,kill,damage,damageSeconde,level,trophy;
+     double critique,trophyChance;
     public CJoueur()
     {
         gold =1000000;
@@ -15,6 +15,8 @@ public class CJoueur {
         damageSeconde=0;
         level=1;
         critique=0.50;
+        trophy=0;
+        trophyChance=0.5;
     }
 
     public int getDamage() {
@@ -63,5 +65,21 @@ public class CJoueur {
 
     public void setCritique(double critique) {
         this.critique = critique;
+    }
+
+    public int getTrophy() {
+        return trophy;
+    }
+
+    public void setTrophy(int trophy) {
+        this.trophy = trophy;
+    }
+
+    public double getTrophyChance() {
+        return trophyChance;
+    }
+
+    public void setTrophyChance(double trophyChance) {
+        this.trophyChance = trophyChance;
     }
 }
